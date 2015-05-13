@@ -1,5 +1,5 @@
 angular.module("schemaForm").run(["$templateCache", function($templateCache) {$templateCache.put("directives/decorators/bootstrap/angular-ui/datepicker.html","<div class=\"form-group\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess(), \'has-feedback\': form.feedback !== false }\">\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  <div class=\"form-control-date\">\n    <div class=\"input-group\">\n      <input type=\"text\" class=\"form-control\" schema-validate=\"form\" ui-date-picker datepicker-popup ng-model=\"$$value$$\" is-open=\"opened\" datepicker-options=\"form.options.dateOptions\" />\n      <span class=\"input-group-addon\" ng-click=\"open($event)\"><i class=\"fa fa-calendar\"></i></span>\n    </div>\n  </div>\n  <div class=\"help-block\"\n    ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n    ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div>\n</div>\n");
-$templateCache.put("directives/decorators/bootstrap/angular-ui/datetimepicker.html","<div class=\"form-group\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess() }\">\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  <div>\n    <datetimepicker minute-step=\"form.options.timeOptions.minuteStep\" ng-model=\"$$value$$\" show-meridian=\"true\" date-format=\"yyyy-MM-dd\" date-options=\"form.options.dateOptions || {}\" mousewheel=\"false\" ></datetimepicker>\n  </div>\n  <input type=\"hidden\" sf-changed=\"form\" ng-model=\"$$value$$\" schema-validate=\"form\" />\n  <div class=\"help-block\"\n    ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n    ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div>\n</div>\n");
+$templateCache.put("directives/decorators/bootstrap/angular-ui/datetimepicker.html","<div class=\"form-group\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess() }\">\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  <div class=\"form-control-datetime\">\n    <div class=\"input-group\" ui-date-picker >\n      <input type=\"text\" class=\"form-control\" datetime-picker=\"dd MMM yyyy HH:mm\" schema-validate=\"form\" ng-model=\"$$value$$\" is-open=\"opened\" datepicker-options=\"form.options.dateOptions\" timepicker-options=\"form.options.timeOptions\" />\n      <span class=\"input-group-addon\" ng-click=\"openCalendar($event)\"><i class=\"fa fa-calendar\"></i></span>\n    </div>\n  </div>\n  <div class=\"help-block\"\n    ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n    ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div>\n</div>\n");
 $templateCache.put("directives/decorators/bootstrap/angular-ui/timepicker.html","<div class=\"form-group\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess(), \'has-feedback\': form.feedback !== false }\">\n  <label class=\"control-label\" ng-show=\"showTitle()\">{{form.title}}</label>\n  <div class=\"form-control-time\">\n    <timepicker ng-model=\"$$value$$\" minute-step=\"form.options.timeOptions.minuteStep\" show-meridian=\"true\"></timepicker>\n  </div>\n  <div class=\"help-block\"\n    ng-show=\"(hasError() && errorMessage(schemaError())) || form.description\"\n    ng-bind-html=\"(hasError() && errorMessage(schemaError())) || form.description\"></div>\n</div>\n");}]);
 angular.module('uiSchemaForm-datepicker', ['schemaForm', 'ui.bootstrap']).config(
 ['schemaFormProvider', 'schemaFormDecoratorsProvider', 'sfPathProvider',
@@ -74,17 +74,17 @@ angular.module('schemaForm').directive('uiDatePicker', function() {
 
   return {
     restrict: 'A',
-    require: 'ngModel',
+//    require: 'ngModel',
     controller: function($scope) {
-      $scope.open = function($event) {
+      $scope.openCalendar = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
 
         $scope.opened = true;
       };
-    },
+    }/*,
     link: function(scope, element, attrs, ngModel) {
 
-    }
+    }*/
   };
 });

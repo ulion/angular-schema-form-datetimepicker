@@ -1,9 +1,11 @@
 <div class="form-group" ng-class="{'has-error': hasError(), 'has-success': hasSuccess() }">
   <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
-  <div>
-    <datetimepicker minute-step="form.options.timeOptions.minuteStep" ng-model="$$value$$" show-meridian="true" date-format="yyyy-MM-dd" date-options="form.options.dateOptions" mousewheel="false" ></datetimepicker>
+  <div class="form-control-datetime">
+    <div class="input-group" ui-date-picker >
+      <input type="text" class="form-control" datetime-picker="dd MMM yyyy HH:mm" schema-validate="form" ng-model="$$value$$" is-open="opened" datepicker-options="form.options.dateOptions" timepicker-options="form.options.timeOptions" />
+      <span class="input-group-addon" ng-click="openCalendar($event)"><i class="fa fa-calendar"></i></span>
+    </div>
   </div>
-  <input type="hidden" sf-changed="form" ng-model="$$value$$" schema-validate="form" />
   <div class="help-block"
     ng-show="(hasError() && errorMessage(schemaError())) || form.description"
     ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>

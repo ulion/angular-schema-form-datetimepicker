@@ -2,17 +2,17 @@ angular.module('schemaForm').directive('uiDatePicker', function() {
 
   return {
     restrict: 'A',
-    require: 'ngModel',
+//    require: 'ngModel',
     controller: function($scope) {
-      $scope.open = function($event) {
+      $scope.openCalendar = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
 
         $scope.opened = true;
       };
-    },
+    }/*,
     link: function(scope, element, attrs, ngModel) {
 
-    }
+    }*/
   };
 });
