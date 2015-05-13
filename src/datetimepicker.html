@@ -1,0 +1,10 @@
+<div class="form-group" ng-class="{'has-error': hasError(), 'has-success': hasSuccess() }">
+  <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
+  <div>
+    <datetimepicker minute-step="form.options.timeOptions.minuteStep" ng-model="$$value$$" show-meridian="true" date-format="yyyy-MM-dd" date-options="form.options.dateOptions" mousewheel="false" ></datetimepicker>
+  </div>
+  <input type="hidden" sf-changed="form" ng-model="$$value$$" schema-validate="form" />
+  <div class="help-block"
+    ng-show="(hasError() && errorMessage(schemaError())) || form.description"
+    ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>
+</div>

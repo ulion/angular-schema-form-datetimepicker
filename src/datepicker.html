@@ -1,0 +1,12 @@
+<div class="form-group" ng-class="{'has-error': hasError(), 'has-success': hasSuccess(), 'has-feedback': form.feedback !== false }">
+  <label class="control-label" ng-show="showTitle()">{{form.title}}</label>
+  <div class="form-control-date">
+    <div class="input-group">
+      <input type="text" class="form-control" schema-validate="form" ui-date-picker datepicker-popup ng-model="$$value$$" is-open="opened" datepicker-options="form.options.dateOptions" />
+      <span class="input-group-addon" ng-click="open($event)"><i class="fa fa-calendar"></i></span>
+    </div>
+  </div>
+  <div class="help-block"
+    ng-show="(hasError() && errorMessage(schemaError())) || form.description"
+    ng-bind-html="(hasError() && errorMessage(schemaError())) || form.description"></div>
+</div>
